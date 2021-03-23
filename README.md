@@ -51,9 +51,58 @@
       + 뷰가 차지할 수 있는 사각형 영역을 할당하여 구성
   
   * 상대 레이아웃
+    - 이해
+      + 부모 컨테이너나 다른 뷰와의 상대적인 위치를 이용해 뷰의 위치를 결정할 수 있는 레이아웃
+      + 규칙 기반의 모델
+      + 제약 레이아웃을 사용하게 되므로써, 권장하지 않음
+    - 속성
+      + 부모 컨테이너와의 상대적 위치 이용
+        + layout_alignParentTop
+        + layout_alignParentBottom
+        + layout_alignParentLeft
+        + layout_alignParentRight
+        + layout_centerHorizontal
+        + layout_centerVertical
+        + layout_centerInParent
+      + 다른 뷰와의 상대적 위치 이용
+        + layout_above
+        + layout_below
+        + layout_toLeftOf
+        + layout_toRightOf
+        + layout_alignTop
+        + layout_alignBottom
+        + layout_alignLeft
+        + layout_alignRight
+        + layout_alignBaseline
+        
   * 테이블 레이아웃
+    - 이해
+      + 각각의 행과 그 안에 여러 개의 열을 넣어 레이아웃을 구성
+      + 격자 모양의 배열을 사용하여 화면을 구성하는 레이아웃
+    - 핵심 태그 및 속성
+      + TableLow 태그 > 한 행을 의미, 안에 여러개의 뷰가 들어가고 이들이 각각 열이 됨
+      + stretchColumns 속성 > 가로방향으로 여유가 있다면, 그 여유공간을 채우도록 컬럼을 설정(ex> 0,1,2)
+      + shrinkColumns 속성 > 부모 컨테이너의 폭에 맞추도록 각 열의 폭을 강제로 축소
+      + layout_column 속성 > 칼럼 인덱스를 지정하여, 순서를 설정
+      + layout_span 속성 > 뷰가 여러 칼럼에 걸쳐있도록 만드는 속성(ex> 2)
+      
   * 프레임 레이아웃
+    - 이해
+      + 싱글 모델을 기반으로 한 레이아웃
+      + 가장 상위에 있는 하나의 뷰 또는 뷰그룹만 보여줌
+      + 여러 개의 뷰가 들어가면 중첩하여 쌓게됨.
+      + 가장 단순하지만 여러 개의 뷰를 중첩한 후, 각 뷰를 전환하여 보여주는 방식으로 자주 사용
+    - 핵심 속성
+      + 가시성(visibility)
+     
   * 스크롤 뷰
+    - 이해
+      + 추가된 뷰의 영역이 한눈에 보이지 않을 때 사용
+      + 스크롤 뷰 안에 뷰를 넣으면 스크롤이 생김
+      
+    - 핵심 태그 및 속성
+      + HorizontalScrollView 태그 > 수평 스크롤을 위한 스크롤 뷰
+      + ScrollView 태그 > 수직 스크롤을 위한 스크롤  
   </details>
   
   
