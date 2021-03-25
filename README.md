@@ -290,24 +290,7 @@
           ~~~
               android:scaleType="centerCrop"
           ~~~
-      + drawable 사용법
-        + 이미지를 나타내려면 /app/res/drawable에 먼저 저장해야 됨
-        + 드로어블은 뷰에 설정할 수 있는 ㅐㄱㄱ체를 의미함
-        + 상태에 따라 그래픽이나 이미지가 선택적으로 보이게 해줌
-        + 해상도에 따라 포더를 구분해야 됨
-          + 초고해상도 > dawable-xhdpi, dawable-xxhdpi, dawable-xxxhdpi
-          + 고해상도 > dawable-hdpi
-          + 중간해상도 > dawable-mdpi
-          + 저해상도 > dawable-Idli
-        + 종류
-          |드로어블 | 설명|
-          | -- | -- |
-          |Bitmap dradddddddd <br/> 비트맵 그래픽 파일을 사용해서 생성|
-          |상태 드로어블|상태별로 다른 비트맵 그래픽 참조|
-          |전환 드로어블|두 개의 드로어블을 서로 전환할 수 있음|
-          |셰이프 드로어블|색상과 그러데이션을 포함하여 도형 모양을 정의할 수 있음|
-          |인셋 드로어블|지정된 거리만큼 다른 드로어블을 들어서 보여줄 수 있음|
-          |클립 드로어블|
+
           
   * 이벤트 처리 이해
     - 처리방식 이해
@@ -352,8 +335,46 @@
   
   * 드로어블
     - 설명
+      + 드로어블은 뷰에 설정할 수 있는 객체를 의미함
+      + 상태에 따라 그래픽이나 이미지가 선택적으로 보이게 해줌
     - 종류 & 설명
-    - 
+      |드로어블 | 설명|
+      | -- | -- |
+      |BitmapDrawable |이미지 파일을 보여줄 때 사용 <br/> 비트맵 그래픽 파일을 사용해서 생성|
+      |StateListDrawable|상태별로 다른 비트맵 그래픽 참조|
+      |TransitionDrawable|두 개의 드로어블을 서로 전환할 수 있음|
+      |ShapeDrawable|색상과 그러데이션을 포함하여 도형 모양을 정의할 수 있음|
+      |InsetDrawalbe|지정된 거리만큼 다른 드로어블을 들어서 보여줄 수 있음|
+      |ClipDrawable|레벨 값을 기준으로 다른 드로어블을 클리핑할 수 있음|
+      |ScaleDrawalbe|레벨 값을 기준으로 다른 드로어블의 크기를 변경할 수 있음|
+    - drawable 사용법
+      + 이미지를 나타내려면 /app/res/drawable에 먼저 저장해야 됨
+      + 해상도에 따라 포더를 구분해야 됨
+        + 초고해상도 > dawable-xhdpi, dawable-xxhdpi, dawable-xxxhdpi
+        + 고해상도 > dawable-hdpi
+        + 중간해상도 > dawable-mdpi
+        + 저해상도 > dawable-Idli
+    - ShapeDrawalbe
+      ~~~
+        <?xml version="1.0" encoding="utf-8"?>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"android:shape="rectangle">
+            <size android:width="200dp" android:height="120dp"/>
+            <stroke android:width="1dp" android:color="#0000ff"/>
+            <solid android:color="#aaddff" />
+            <padding android:bottom="1dp" />
+        </shape>
+        
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <gradient
+                android:startColor="#7288DB"
+                android:centerColor="#3250B4"
+                android:endColor="#254095"
+                android:angle="90"
+                android:centerY="0.5"
+                />
+            <corners android:radius="2dp" />
+        </shape>
+      ~~~
   </details>
 
 
