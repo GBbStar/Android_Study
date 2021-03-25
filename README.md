@@ -112,7 +112,208 @@
   <summary> 목록 </summary>
   
   * 기본 위젯
+    - TextView
+      + 속성
+        + text
+          ~~~
+              android:text="여기에 사용자 이름을 입력하세요. 이름은 한 줄로 표시됩니다."
+          ~~~
+        + textColor
+          + 일반적으로 #AARRGGBB 포맷을 이용(Alpha는 투명하지 않음-FF ~ 투명함 00까지)
+          ~~~
+              android:textColor="#FFFF0000"
+          ~~~
+        + textSize
+          + sp단위 권장(단말의 해상도에 따라 글자의 크기를 일정한 크기로 보일 수 있게 하고, 폰트도 반영되기 떄문)
+          ~~~
+              android:textSize="40sp"
+          ~~~
+        + textStyle
+          + 문자열의 스타일 속성 지정(normal, bold, italic ...)
+          ~~~
+              android:textStyle="bold"
+          ~~~
+        + typeFace
+          + 문자열의 폰트 지정(normal, sans, serif, monospace ...)
+          + 다른 폰트가 필요하다면 폰트를 앱에 추가하고 설정하면 됨
+          ~~~
+              android:typeface="serif"
+          ~~~
+        + maxLines
+          + 텍스트뷰에서 표시하는 문자열의 최대 줄 수 설정
+          + 한줄이 넘어가면 표시되지 않음
+          ~~~
+              android:maxLines="1"
+          ~~~
+        + autoLink
+          + 문서에 포함된 웹페이지 주소나 이메일 주소를 링크 색상으로 표시, 누르면 바로 접속하거나 편집기를 띄워주는 기능을 설정
+        
+        + lineSpacingMultiplier
+          + 줄 간격을 기본 줄 간격의 배수로 설정할 때 사용
+          
+        + lineSpacingExtra
+          + 줄 간격을 여유 값으로 설정할 때 사용
+          
+        + capitalize
+          + 글자, 단어, 문장 단위로 대소문자를 조절
+          + characters, word, sentences ... 
+          + 각각 기준으로 맨 앞 글자를 대문자로 바꿔줌
+          
+
+        
+      + text 설정 
+        + /app/res/values의 strings.xml파일에 작성한 문자열을 지정하는 방법을 권장
+        + 레이아웃(xml)과 문자열 파일을 구분하는 것이 유용
+        + 다국어 지원이라는 장점도 있음(단말의 설정에 따라 /app/res/values-??/strings.xml의 문자열이 표시됨)
+        
+    - Button
+      + Normal Button
+      + Check Box
+        + 메서드
+          + boolean isChecked()
+          + void setChecked(boolean checked)
+          + void toggle()
+        + 리스너
+          + void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+      + Radio Button
+        + 메소드
+          + boolean isChecked()
+          + void setChecked(boolean checked)
+          + void toggle()
+        + 리스너
+          + void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+        + 라디오 그룹과 버튼으로 이루어져있다(하나 선택하면 나머지가 해제되도록 묶어줘야 함)
+          ~~~
+              <RadioGroup
+                  android:id="@+id/radioGroup01"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="20dp"
+                  android:orientation="horizontal"
+                  android:paddingLeft="10dp"
+                  android:paddingRight="10dp">
+
+                  <RadioButton
+                      android:id="@+id/radio01"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="남성"
+                      android:textColor="#ff55aaff"
+                      android:textSize="24sp"
+                      android:textStyle="bold" />
+
+                  <RadioButton
+                      android:id="@+id/radio02"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="여성"
+                      android:textColor="#ff55aaff"
+                      android:textSize="24sp"
+                      android:textStyle="bold" />
+              </RadioGroup>
+          ~~~
+    - EditText
+      + 설명
+        + 입력상자의 역할(사용자에게 값을 입력받음)
+      + 속성
+        + hint
+          + 간단한 안내글 표시
+          ~~~
+              android:hint="이름을 입력하세요."
+          ~~~
+        + textColorHint
+        + inputType
+          + 입력하는 문자의 유형 지정
+          ~~~
+              android:inputType="text"
+          ~~~
+        + selectAllOnFocus
+          + 선택할 때마다 전체 내용을 수정할 수 있도록 함
+        + cursorVisible
+          + 커서가 보일지 결정
+        + editable
+          + 문자열의 편집 가능을 설정
+        + ellipsize
+          + 입력한 내용의 생략할 부분을 설정
+          + none, start, middle, end ...
+     
+      + 메서드
+        + getSelectionStart()
+          + 선택된 영역의 시작 위치를 반환
+        + getSelectionEnd()
+          + 선택된 영역의 끝 위치를 반환
+        + setSelection()
+          + 선택 영역을 지정
+        + extendSelection()
+          + 선택 영역을 확장
+        + selectAll()
+          + 전체 문자열 선택
+        + getText()
+      
+      + 리스너
+        + public void addTextChangedListener(TextWatcher watcher) 
+          + 사용자 입력에 의해 바뀔떄마다 확인하는 기능
+        + TextWatcher 인터페이스
+          + void beforeTextChanged(CharSequence s, int start, int count, int after)
+          + void afterTextChanged(Editable s)
+          + void onTextChanged(CharSequence s, int start, int before, int count)
+    
+    - ImageView & ImageButton
+      + 두 위젯간 차이점
+        버튼처럼 사용할 수 있는가 없는가 
+      + 속성
+        + src, srcCompat
+          + 원본 이미지를 설정
+          + JPG or PNG
+          ~~~
+              android:srcCompat="@drawable/person"
+              or
+              android:src="@drawable/person"
+              or
+              android:background="@drawable/person"
+          ~~~
+        + maxWidth, maxHeight
+          + 이미지가 표시되는 최대 폭, 높이를 설정
+          ~~~
+              android:maxWidth="100dp"
+              android:maxHeight="100dp"
+          ~~~
+        + tint
+          + 보이는 이미지의 색상을 설정
+          + 포멧은 #AARRGGBB
+          ~~~
+              android:tint="#AAAAAAAA"
+          ~~~
+        + scaleType
+          + 이미지 뷰의 크기에 맞게 원본 이미지를 자동으로 늘리거나 줄여서 보여줄 것인가를 설정
+          + fitXY, centerCrop, centerInside .... 
+          ~~~
+              android:scaleType="centerCrop"
+          ~~~
+      + drawable 사용법
+        + 이미지를 나타내려면 /app/res/drawable에 먼저 저장해야 됨
+        + 드로어블은 뷰에 설정할 수 있는 ㅐㄱㄱ체를 의미함
+        + 상태에 따라 그래픽이나 이미지가 선택적으로 보이게 해줌
+        + 해상도에 따라 포더를 구분해야 됨
+          + 초고해상도 > dawable-xhdpi, dawable-xxhdpi, dawable-xxxhdpi
+          + 고해상도 > dawable-hdpi
+          + 중간해상도 > dawable-mdpi
+          + 저해상도 > dawable-Idli
+        + 종류
+          |드로어블 | 설명|
+          | -- | -- |
+          |Bitmap dradddddddd <br/> 비트맵 그래픽 파일을 사용해서 생성|
+          |상태 드로어블|상태별로 다른 비트맵 그래픽 참조|
+          |전환 드로어블|두 개의 드로어블을 서로 전환할 수 있음|
+          |셰이프 드로어블|색상과 그러데이션을 포함하여 도형 모양을 정의할 수 있음|
+          |인셋 드로어블|지정된 거리만큼 다른 드로어블을 들어서 보여줄 수 있음|
+          |클립 드로어블|
+          
   * 이벤트 처리 이해
+    - 처리방식 이해
+    - 이벤트 종류
+    - 처리하기
+    
   * 토스트
   * 스낵바
   * 대화상자
@@ -150,6 +351,9 @@
   <summary> 목록 </summary>
   
   * 드로어블
+    - 설명
+    - 종류 & 설명
+    - 
   </details>
 
 
